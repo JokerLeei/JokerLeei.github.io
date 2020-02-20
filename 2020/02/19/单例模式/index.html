@@ -266,11 +266,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/02/19/I%E2%99%A5U/" rel="prev" title="I♥U">
-      <i class="fa fa-chevron-left"></i> I♥U
-    </a></div>
       <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/20/test/" rel="next" title="test">
+      test <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -453,15 +453,15 @@
     }
   }
 
-  fetch('https://app-router.leancloud.cn/2/route?appId=AdwXxYhlrKDCaAd2Mm9wQo5O-gzGzoHsz')
+  fetch('https://app-router.leancloud.cn/2/route?appId=CDRocj9P5t8f77lE70CFvaC2-gzGzoHsz')
     .then(response => response.json())
     .then(({ api_server }) => {
       var Counter = (method, url, data) => {
         return fetch(`https://${api_server}/1.1${url}`, {
           method: method,
           headers: {
-            'X-LC-Id'     : 'AdwXxYhlrKDCaAd2Mm9wQo5O-gzGzoHsz',
-            'X-LC-Key'    : 'AwTqNfGC9VOyVYLwMs92sJiK',
+            'X-LC-Id'     : 'CDRocj9P5t8f77lE70CFvaC2-gzGzoHsz',
+            'X-LC-Key'    : 'mHWzbxsbaVRQb7BnOyT9y5A8',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
