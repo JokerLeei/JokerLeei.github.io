@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="数据库," />
+  <meta name="keywords" content="多线程," />
 
 
 
@@ -115,16 +115,16 @@
 
 
 
-<meta name="description" content="ACIDAtomicity（原子性）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 Consistency（一致性）事务前后数据的完整性必须保持一致。 Isolation（隔离性）事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。 Durability（持久性）持久性是指一个事务一旦被提">
+<meta name="description" content="使用线程池：​    1.自己定义线程池类实现XX线程池，设置参数…进行操作​    2.使用Executors工具类获取线程池对象 好处：​    1.线程重用，避免多次新建销毁​    2.线程并发数控制，并且能对线程管理 线程池构造参数详解 1234567public ThreadPoolExecutor(int corePoolSize, &#x2F;&#x2F; 线程池中的核心线程数    int maxi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ACID&amp;事务隔离级别">
-<meta property="og:url" content="http://yoursite.com/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/index.html">
+<meta property="og:title" content="线程池">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/%E7%BA%BF%E7%A8%8B%E6%B1%A0/index.html">
 <meta property="og:site_name" content="JokerLee">
-<meta property="og:description" content="ACIDAtomicity（原子性）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 Consistency（一致性）事务前后数据的完整性必须保持一致。 Isolation（隔离性）事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。 Durability（持久性）持久性是指一个事务一旦被提">
-<meta property="article:published_time" content="2020-02-20T10:19:00.000Z">
-<meta property="article:modified_time" content="2020-02-20T10:47:00.922Z">
+<meta property="og:description" content="使用线程池：​    1.自己定义线程池类实现XX线程池，设置参数…进行操作​    2.使用Executors工具类获取线程池对象 好处：​    1.线程重用，避免多次新建销毁​    2.线程并发数控制，并且能对线程管理 线程池构造参数详解 1234567public ThreadPoolExecutor(int corePoolSize, &#x2F;&#x2F; 线程池中的核心线程数    int maxi">
+<meta property="article:published_time" content="2020-02-22T15:51:40.000Z">
+<meta property="article:modified_time" content="2020-02-23T06:31:04.223Z">
 <meta property="article:author" content="JokerLee">
-<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
 
 
@@ -155,14 +155,14 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/20/ACID事务/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/22/线程池/"/>
 
 
 
 
 
 
-  <title>ACID&事务隔离级别 | JokerLee</title>
+  <title>线程池 | JokerLee</title>
   
 
 
@@ -329,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JokerLee">
@@ -346,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ACID&事务隔离级别</h1>
+          <h1 class="post-title" itemprop="name headline">线程池</h1>
         
 
         <div class="post-meta">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T18:19:00+08:00">
-                2020-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-22T23:51:40+08:00">
+                2020-02-22
               </time>
             
 
@@ -374,35 +374,13 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-20T18:47:00+08:00">
-                2020-02-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-23T14:31:04+08:00">
+                2020-02-23
               </time>
             
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -410,7 +388,7 @@
 
           
           
-             <span id="/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/" class="leancloud_visitors" data-flag-title="ACID&事务隔离级别">
+             <span id="/2020/02/22/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="leancloud_visitors" data-flag-title="线程池">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -440,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  892
+                  1.6k
                 </span>
               
 
@@ -456,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -477,57 +455,37 @@
       
 
       
-        <h1 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h1><h2 id="Atomicity（原子性）"><a href="#Atomicity（原子性）" class="headerlink" title="Atomicity（原子性）"></a>Atomicity（原子性）</h2><p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
-<h2 id="Consistency（一致性）"><a href="#Consistency（一致性）" class="headerlink" title="Consistency（一致性）"></a>Consistency（一致性）</h2><p>事务前后数据的完整性必须保持一致。</p>
-<h2 id="Isolation（隔离性）"><a href="#Isolation（隔离性）" class="headerlink" title="Isolation（隔离性）"></a>Isolation（隔离性）</h2><p>事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。</p>
-<h2 id="Durability（持久性）"><a href="#Durability（持久性）" class="headerlink" title="Durability（持久性）"></a>Durability（持久性）</h2><p>持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响</p>
+        <h2 id="使用线程池："><a href="#使用线程池：" class="headerlink" title="使用线程池："></a>使用线程池：</h2><p>​    1.自己定义线程池类实现XX线程池，设置参数…进行操作<br>​    2.使用Executors工具类获取线程池对象</p>
+<h2 id="好处："><a href="#好处：" class="headerlink" title="好处："></a>好处：</h2><p>​    1.线程重用，避免多次新建销毁<br>​    2.线程并发数控制，并且能对线程管理</p>
+<p>线程池构造参数详解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize, // 线程池中的核心线程数</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">int</span> maximumPoolSize,                    // 线程池中允许的最大线程数</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">long</span> keepAliveTime,	                    // 线程空闲时的存活时间</span></span></span><br><span class="line"><span class="function"><span class="params">    TimeUnit unit,                          // keepAliveTime的单位</span></span></span><br><span class="line"><span class="function"><span class="params">    BlockingQueue&lt;Runnable&gt; workQueue,      // 用来保存等待被执行的任务的阻塞队列</span></span></span><br><span class="line"><span class="function"><span class="params">    ThreadFactory threadFactory,            // 创建线程的工厂</span></span></span><br><span class="line"><span class="function"><span class="params">    RejectedExecutionHandler handler)</span>       <span class="comment">// 线程池的饱和(拒绝)策略</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="corePoolSize"><a href="#corePoolSize" class="headerlink" title="corePoolSize"></a>corePoolSize</h4><p>​    线程池中的核心线程数，当提交一个任务时，线程池创建一个新线程执行任务，直到当前线程数<br>​    等于corePoolSize；如果当前线程数为corePoolSize，继续提交的任务被保存到阻塞队列中，等<br>​    待被执行；如果执行了线程池的prestartAllCoreThreads()方法，线程池会提前创建并启动所有<br>​    核心线程。当线程数小于等于corePoolSize时，默认情况下线程会一直存活在线程池中，即时线<br>​    程处于空闲状态。如果allowCoreThreadTimeOut被设置为true时，无论线程数多少，那么线程处<br>​    于空闲状态超过一定时间就会被销毁掉。</p>
+<h4 id="keepAliveTime"><a href="#keepAliveTime" class="headerlink" title="keepAliveTime"></a>keepAliveTime</h4><p>​    线程空闲时的存活时间，即当线程没有任务执行时，继续存活的时间；默认情况下，该参数只在<br>​    线程数大于corePoolSize时才有用；如果allowCoreThreadTimeOut被设置为true时，无论线程数<br>​    多少，线程处于空闲状态超过一定时间就会被销毁掉。</p>
+<h4 id="TimeUnit"><a href="#TimeUnit" class="headerlink" title="TimeUnit"></a>TimeUnit</h4><p>​    keepAliveTime的单位。TimeUnit是一个枚举类型，其包括：<br>​    NANOSECONDS ：1微毫秒 = 1微秒 / 1000<br>​    MICROSECONDS ：1微秒 = 1毫秒 / 1000<br>​    MILLISECONDS ：1毫秒 = 1秒 /1000<br>​    SECONDS ：秒<br>​    MINUTES ：分<br>​    HOURS ：小时<br>​    DAYS ：天</p>
+<h4 id="workQueue"><a href="#workQueue" class="headerlink" title="workQueue"></a>workQueue</h4><p>​    用来保存等待被执行的任务的阻塞队列，且任务必须实现Runable接口，如下阻塞队列：<br>​    ArrayBlockingQueue：基于数组结构的有界阻塞队列，按FIFO排序任务；<br>​    LinkedBlockingQuene：基于链表结构的无界阻塞队列，按FIFO排序任务，吞吐量通常要高于ArrayBlockingQuene；<br>​    SynchronousQuene：一个不存储元素的阻塞队列，每个插入操作必须等到另一个线程调用移除操作，否则插入操作<br>​        一直处于阻塞状态，吞吐量通常要高于LinkedBlockingQuene；</p>
+<h4 id="threadFactory"><a href="#threadFactory" class="headerlink" title="threadFactory"></a>threadFactory</h4><p>​    创建线程的工厂，通过自定义的线程工厂可以给每个新建的线程设置一个具有识别度的线程名</p>
+<h4 id="handler"><a href="#handler" class="headerlink" title="handler"></a>handler</h4><p>​    线程池的饱和策略，当阻塞队列满了，且没有空闲的工作线程，如果继续提交任务，必须采取一种策略处理该任务，<br>​        线程池提供了4种策略：<br>​    AbortPolicy：直接抛出异常，默认策略；<br>​    CallerRunsPolicy：用调用者所在的线程来执行任务；<br>​    DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务；<br>​    DiscardPolicy：直接丢弃任务</p>
 <hr>
-<h1 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h1><h6 id="事务隔离级别分为四种（级别递增）："><a href="#事务隔离级别分为四种（级别递增）：" class="headerlink" title="事务隔离级别分为四种（级别递增）："></a>事务隔离级别分为四种（级别递增）：</h6><p>1、Read Uncommitted（未提交读） ：事务中的修改，即使没有提交，其他事务也可以看得到，会导致“脏读”、“幻读”和“不可重复读取”。</p>
-<p>2、READ COMMITTED （提交读）：大多数主流数据库的默认事务等级，保证了一个事务不会读到另一个并行事务已修改但未提交的数据，避免了“脏读取”，但不能避免“幻读”和“不可重复读取”。该级别适用于大多数系统。</p>
-<p>3、REPEATABLE READ（重复读） ：保证了一个事务不会修改已经由另一个事务读取但未提交（回滚）的数据。避免了“脏读取”和“不可重复读取”的情况，但不能避免“幻读”，但是带来了更多的性能损失。</p>
-<p>4、Serializable （串行化）：最严格的级别，事务串行执行，资源消耗最大。</p>
-<table>
-<thead>
-<tr>
-<th align="left">隔离级别</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻读</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">读未提交（Read uncommitted）</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">读已提交（Read committed）</td>
-<td>×</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">重复读（Repeatable read）</td>
-<td>×</td>
-<td>×</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">串行化（Serializable）</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="脏读、不可重复读、幻读"><a href="#脏读、不可重复读、幻读" class="headerlink" title="脏读、不可重复读、幻读"></a>脏读、不可重复读、幻读</h1><h3 id="脏读（前后多次读取，数据内容不一致-修改者事务先开启）"><a href="#脏读（前后多次读取，数据内容不一致-修改者事务先开启）" class="headerlink" title="脏读（前后多次读取，数据内容不一致/修改者事务先开启）"></a>脏读（前后多次读取，数据内容不一致/修改者事务先开启）</h3><p>所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读。</p>
-<p>也就是说，当前事务读到的数据是别的事务想要修改成为的但是没有修改成功的数据。</p>
-<h3 id="不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）"><a href="#不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）" class="headerlink" title="不可重复读（前后多次读取，数据内容不一致/修改者事务后开启）"></a>不可重复读（前后多次读取，数据内容不一致/修改者事务后开启）</h3><p>事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。</p>
-<p>也就是说，当前事务先进行了一次数据读取，然后再次读取到的数据是别的事务修改成功的数据，导致两次读取到的数据不匹配，也就照应了不可重复读的语义。</p>
-<h3 id="幻读（前后多次读取，数据总量不一致-修改者事务后开启）"><a href="#幻读（前后多次读取，数据总量不一致-修改者事务后开启）" class="headerlink" title="幻读（前后多次读取，数据总量不一致/修改者事务后开启）"></a>幻读（前后多次读取，数据总量不一致/修改者事务后开启）</h3><p>事务A首先根据条件索引得到N条数据，然后事务B改变了这N条数据之外的M条或者增添了M条符合事务A搜索条件的数据，导致事务A再次搜索发现有N+M条数据了，就产生了幻读。</p>
-<p>也就是说，当前事务读第一次取到的数据比后来读取到数据条目少。</p>
-<h5 id="不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"><a href="#不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete" class="headerlink" title="不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"></a><u>不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete</u></h5>
+<h2 id="线程池分类"><a href="#线程池分类" class="headerlink" title="线程池分类"></a>线程池分类</h2><h2 id="此处为使用Executors工具类获取线程池对象，列出5种常用线程池"><a href="#此处为使用Executors工具类获取线程池对象，列出5种常用线程池" class="headerlink" title="(此处为使用Executors工具类获取线程池对象，列出5种常用线程池)"></a>(此处为使用Executors工具类获取线程池对象，列出5种常用线程池)</h2><h4 id="1、newCachedThreadPool"><a href="#1、newCachedThreadPool" class="headerlink" title="1、newCachedThreadPool"></a>1、newCachedThreadPool</h4><p>​    作用：创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们，并在需要时使用提供的<br>​        ThreadFactory 创建新线程。<br>​    特征：<br>​    （1）线程池中数量没有固定，可达到最大值（Interger. MAX_VALUE）<br>​    （2）线程池中的线程可进行缓存重复利用和回收（回收默认时间为1分钟）<br>​    （3）当线程池中，没有可用线程，会重新创建一个线程<br>​    创建方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Executors.newCachedThreadPool();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、newFixedThreadPool"><a href="#2、newFixedThreadPool" class="headerlink" title="2、newFixedThreadPool"></a>2、newFixedThreadPool</h4><p>​    作用：创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程。在任意点，在大多数 nThreads<br>​        线程会处于处理任务的活动状态。如果在所有线程处于活动状态时提交附加任务，则在有可用线程之前，附加<br>​        任务将在队列中等待。如果在关闭前的执行期间由于失败而导致任何线程终止，那么一个新线程将代替它执行<br>​        后续的任务（如果需要）。在某个线程被显式地关闭之前，池中的线程将一直存在。<br>​    特征：<br>​    （1）线程池中的线程处于一定的量，可以很好的控制线程的并发量<br>​    （2）线程可以重复被使用，在显示关闭之前，都将一直存在<br>​    （3）超出一定量的线程被提交时候需在队列中等待<br>​    创建方式： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Executors.newFixedThreadPool(<span class="keyword">int</span> nThreads)；<span class="comment">//nThreads为线程的数量 </span></span><br><span class="line">Executors.newFixedThreadPool(<span class="keyword">int</span> nThreads，ThreadFactory threadFactory)；</span><br><span class="line"><span class="comment">// nThreads为线程的数量，threadFactory创建线程的工厂方式</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3、newSingleThreadExecutor"><a href="#3、newSingleThreadExecutor" class="headerlink" title="3、newSingleThreadExecutor"></a>3、newSingleThreadExecutor</h4><p>​    作用：创建一个使用单个 worker 线程的 Executor，以无界队列方式来运行该线程。（注意，如果因为在关闭前的执行<br>​        期间出现失败而终止了此单个线程，那么如果需要，一个新线程将代替它执行后续的任务）。可保证顺序地执<br>​        行各个任务，并且在任意给定的时间不会有多个线程是活动的。与其他等效的 newFixedThreadPool(1) 不同，<br>​        可保证无需重新配置此方法所返回的执行程序即可使用其他的线程。<br>​    特征：<br>​    （1）线程池中最多执行1个线程，之后提交的线程活动将会排在队列中以此执行<br>​    创建方式： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Executors.newSingleThreadExecutor() ； </span><br><span class="line">Executors.newSingleThreadExecutor(ThreadFactory threadFactory)；<span class="comment">// threadFactory创建线程的工厂方式</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4、newScheduleThreadPool"><a href="#4、newScheduleThreadPool" class="headerlink" title="4、newScheduleThreadPool"></a>4、newScheduleThreadPool</h4><p>​    作用： 创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行。<br>​    特征：<br>​    （1）线程池中具有指定数量的线程，即便是空线程也将保留<br>​    （2）可定时或者延迟执行线程活动<br>​    创建方式： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Executors.newScheduledThreadPool(<span class="keyword">int</span> corePoolSize)；<span class="comment">// corePoolSize线程的个数 </span></span><br><span class="line">Executors.newScheduledThreadPool(<span class="keyword">int</span> corePoolSize, ThreadFactory threadFactory)；</span><br><span class="line"><span class="comment">// corePoolSize线程的个数，threadFactory创建线程的工厂</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5、newSingleThreadScheduledExecutor"><a href="#5、newSingleThreadScheduledExecutor" class="headerlink" title="5、newSingleThreadScheduledExecutor"></a>5、newSingleThreadScheduledExecutor</h4><p>​    作用： 创建一个单线程执行程序，它可安排在给定延迟后运行命令或者定期地执行。<br>​    特征：<br>​    （1）线程池中最多执行1个线程，之后提交的线程活动将会排在队列中以此执行<br>​    （2）可定时或者延迟执行线程活动<br>​    创建方式： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Executors.newSingleThreadScheduledExecutor() ； </span><br><span class="line">Executors.newSingleThreadScheduledExecutor(ThreadFactory threadFactory) ；<span class="comment">//threadFactory创建线程的工</span></span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+
       
     </div>
     
@@ -544,7 +502,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"># 多线程</a>
           
         </div>
       
@@ -557,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/20/B%20Tree/" rel="next" title="B Tree、B+ Tree、B* Tree">
-                <i class="fa fa-chevron-left"></i> B Tree、B+ Tree、B* Tree
+              <a href="/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%94%BB%E7%95%A5/" rel="next" title="个人博客攻略">
+                <i class="fa fa-chevron-left"></i> 个人博客攻略
               </a>
             
           </div>
@@ -566,10 +524,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/" rel="prev" title="数据库优化">
-                数据库优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -724,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ACID"><span class="nav-number">1.</span> <span class="nav-text">ACID</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Atomicity（原子性）"><span class="nav-number">1.1.</span> <span class="nav-text">Atomicity（原子性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistency（一致性）"><span class="nav-number">1.2.</span> <span class="nav-text">Consistency（一致性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Isolation（隔离性）"><span class="nav-number">1.3.</span> <span class="nav-text">Isolation（隔离性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Durability（持久性）"><span class="nav-number">1.4.</span> <span class="nav-text">Durability（持久性）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#事务隔离级别分为四种（级别递增）："><span class="nav-number">2.0.0.0.0.1.</span> <span class="nav-text">事务隔离级别分为四种（级别递增）：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脏读、不可重复读、幻读"><span class="nav-number">3.</span> <span class="nav-text">脏读、不可重复读、幻读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脏读（前后多次读取，数据内容不一致-修改者事务先开启）"><span class="nav-number">3.0.1.</span> <span class="nav-text">脏读（前后多次读取，数据内容不一致&#x2F;修改者事务先开启）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）"><span class="nav-number">3.0.2.</span> <span class="nav-text">不可重复读（前后多次读取，数据内容不一致&#x2F;修改者事务后开启）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幻读（前后多次读取，数据总量不一致-修改者事务后开启）"><span class="nav-number">3.0.3.</span> <span class="nav-text">幻读（前后多次读取，数据总量不一致&#x2F;修改者事务后开启）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"><span class="nav-number">3.0.3.0.1.</span> <span class="nav-text">不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用线程池："><span class="nav-number">1.</span> <span class="nav-text">使用线程池：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好处："><span class="nav-number">2.</span> <span class="nav-text">好处：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#corePoolSize"><span class="nav-number">2.0.1.</span> <span class="nav-text">corePoolSize</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#keepAliveTime"><span class="nav-number">2.0.2.</span> <span class="nav-text">keepAliveTime</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TimeUnit"><span class="nav-number">2.0.3.</span> <span class="nav-text">TimeUnit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#workQueue"><span class="nav-number">2.0.4.</span> <span class="nav-text">workQueue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#threadFactory"><span class="nav-number">2.0.5.</span> <span class="nav-text">threadFactory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#handler"><span class="nav-number">2.0.6.</span> <span class="nav-text">handler</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池分类"><span class="nav-number">3.</span> <span class="nav-text">线程池分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#此处为使用Executors工具类获取线程池对象，列出5种常用线程池"><span class="nav-number">4.</span> <span class="nav-text">(此处为使用Executors工具类获取线程池对象，列出5种常用线程池)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、newCachedThreadPool"><span class="nav-number">4.0.1.</span> <span class="nav-text">1、newCachedThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、newFixedThreadPool"><span class="nav-number">4.0.2.</span> <span class="nav-text">2、newFixedThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、newSingleThreadExecutor"><span class="nav-number">4.0.3.</span> <span class="nav-text">3、newSingleThreadExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、newScheduleThreadPool"><span class="nav-number">4.0.4.</span> <span class="nav-text">4、newScheduleThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、newSingleThreadScheduledExecutor"><span class="nav-number">4.0.5.</span> <span class="nav-text">5、newSingleThreadScheduledExecutor</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
