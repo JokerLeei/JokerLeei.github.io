@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="数据库," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -115,19 +115,16 @@
 
 
 
-<meta name="description" content="数据库优化  MySql 分析 sql 语句效率MySql内部函数 explain（查询sql的执行计划）使用方法以及返回各列的含义使用方法： 1explain select count(*) from t;  table:显示这一行的数据是关于哪张表的type:这是重要的列，显示连接使用了何种类型。从最好到最差的连接类型为const、eq_reg、ref、range、index 和ALLposs">
+<meta name="description" content="To be continue……">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库优化">
-<meta property="og:url" content="http://yoursite.com/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="毕业设计">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="JokerLee">
-<meta property="og:description" content="数据库优化  MySql 分析 sql 语句效率MySql内部函数 explain（查询sql的执行计划）使用方法以及返回各列的含义使用方法： 1explain select count(*) from t;  table:显示这一行的数据是关于哪张表的type:这是重要的列，显示连接使用了何种类型。从最好到最差的连接类型为const、eq_reg、ref、range、index 和ALLposs">
-<meta property="og:image" content="http://yoursite.com/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/demo.png">
-<meta property="article:published_time" content="2020-02-20T10:53:13.000Z">
-<meta property="article:modified_time" content="2020-02-21T03:34:32.382Z">
+<meta property="og:description" content="To be continue……">
+<meta property="article:published_time" content="2020-02-24T05:46:27.000Z">
+<meta property="article:modified_time" content="2020-02-24T05:49:05.756Z">
 <meta property="article:author" content="JokerLee">
-<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/demo.png">
 
 
 
@@ -157,14 +154,14 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/20/数据库优化/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/24/毕业设计/"/>
 
 
 
 
 
 
-  <title>数据库优化 | JokerLee</title>
+  <title>毕业设计 | JokerLee</title>
   
 
 
@@ -331,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JokerLee">
@@ -348,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库优化</h1>
+          <h1 class="post-title" itemprop="name headline">毕业设计</h1>
         
 
         <div class="post-meta">
@@ -360,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T18:53:13+08:00">
-                2020-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-24T13:46:27+08:00">
+                2020-02-24
               </time>
             
 
@@ -376,8 +373,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-21T11:34:32+08:00">
-                2020-02-21
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-24T13:49:05+08:00">
+                2020-02-24
               </time>
             
           </span>
@@ -395,8 +392,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点</span>
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index">
+                    <span itemprop="name">经验</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
                   </a>
                 </span>
 
@@ -412,7 +420,7 @@
 
           
           
-             <span id="/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/" class="leancloud_visitors" data-flag-title="数据库优化">
+             <span id="/2020/02/24/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="leancloud_visitors" data-flag-title="毕业设计">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -442,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  3
                 </span>
               
 
@@ -458,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  1
                 </span>
               
             </div>
@@ -479,109 +487,7 @@
       
 
       
-        <h1 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h1><p><img src="/2020/02/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/demo.png" alt></p>
-<hr>
-<h2 id="MySql-分析-sql-语句效率"><a href="#MySql-分析-sql-语句效率" class="headerlink" title="MySql 分析 sql 语句效率"></a>MySql 分析 sql 语句效率</h2><h3 id="MySql内部函数-explain（查询sql的执行计划）使用方法以及返回各列的含义"><a href="#MySql内部函数-explain（查询sql的执行计划）使用方法以及返回各列的含义" class="headerlink" title="MySql内部函数 explain（查询sql的执行计划）使用方法以及返回各列的含义"></a>MySql内部函数 explain（查询sql的执行计划）使用方法以及返回各列的含义</h3><p>使用方法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> t;</span><br></pre></td></tr></table></figure>
-
-<p>table:显示这一行的数据是关于哪张表的<br>type:这是重要的列，显示连接使用了何种类型。从最好到最差的连接类型为const、eq_reg、ref、range、index 和ALL<br>possible_keys:显示可能应用在这张表中的索引。如果为空，没有可能的索引。<br>key:实际使用的索引。如果为NULL,则没有使用索引。<br>keyjen:使用的索引的长度。在不损失精确性的情况下，长度越短越好<br>ref:显示索引的哪一列被使用了，如果可能的话，是一个常数<br>rows: MYSQL认为必须检查的用来返回请求数据的行数</p>
-<hr>
-<h2 id="SQL-语句优化"><a href="#SQL-语句优化" class="headerlink" title="SQL 语句优化"></a>SQL 语句优化</h2><ol>
-<li><p>不使用select *，会生成无用结果</p>
-</li>
-<li><p>where 中不用 null（全表扫描）</p>
-<p>如：    </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span> <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
-
-<p>为id建立默认值0，然后使用默认值代替null：    </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>where 中不用!=或&lt;&gt;（全表扫描）</p>
-</li>
-<li><p>where 中不用 or （全表扫描）</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">10</span> <span class="keyword">or</span> <span class="keyword">num</span>=<span class="number">20</span></span><br></pre></td></tr></table></figure>
-
-<p>改为 union：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">10</span></span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">20</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不用 in 和 not in（全表扫描）</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span> <span class="keyword">in</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="comment">--连续数值</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">from</span> a <span class="keyword">where</span> <span class="keyword">num</span> <span class="keyword">in</span>(<span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">from</span> b) <span class="comment">--不连续数值</span></span><br></pre></td></tr></table></figure>
-
-<p>对于连续的数值，改为between：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span> <span class="keyword">between</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>对于不连续的数值，改为exist：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">from</span> a <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> b <span class="keyword">where</span> <span class="keyword">num</span>=a.num)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模糊查询不能在开头：%xxx%（全表扫描），用 xxx%</p>
-</li>
-<li><p>不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算（全表扫描）</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>/<span class="number">2</span>=<span class="number">100</span></span><br></pre></td></tr></table></figure>
-
-<p>改为：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">100</span>*<span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<hr>
-<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><ol>
-<li><p>选择合适列建立索引</p>
-<ol>
-<li>首先应考虑在 where 、order by、group by、on 从句中出现的列上建立索引。</li>
-<li>索引字段越小越好，因为数据库里的数据是以页存储的，如果IO一次读取一页的数据很多，这样的话就可以提高服务器IO的效率。</li>
-<li>离散度大的列放到联合索引的前面</li>
-</ol>
-</li>
-<li><p>索引的维护和优化</p>
-<ol>
-<li><p>重复索引<br>重复索引是指相同的列以相同顺序建立的同类型索引，如下表的 primary key 和 ID 列上的索引就是重复索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span> primary <span class="keyword">key</span>,  <span class="comment">--primary key(包含unique)</span></span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">  <span class="keyword">unique</span>(<span class="keyword">id</span>) <span class="comment">--unique</span></span><br><span class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>冗余索引<br>冗余索引是指多个索引的前缀相同，或是在联合索引中包含了主键的索引，如下表的 key(name, id) 就是一个冗余索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span> primary <span class="keyword">key</span>, <span class="comment">--创建primary key时自带主键索引</span></span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">  <span class="keyword">key</span>(<span class="keyword">name</span>, <span class="keyword">id</span>) <span class="comment">--联合索引包含主键索引</span></span><br><span class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span>;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h2 id="数据库结构优化"><a href="#数据库结构优化" class="headerlink" title="数据库结构优化"></a>数据库结构优化</h2><ol>
-<li><h4 id="选择合适的数据类型"><a href="#选择合适的数据类型" class="headerlink" title="选择合适的数据类型"></a>选择合适的数据类型</h4><p>数据类型的选择，重点在于<strong>合适</strong>二字，如何确定选择的数据类型是否合适?</p>
-<ol>
-<li>使用可以存下你的数据的最小的数据类型。</li>
-<li>使用简单的数据类型。Int要比varchar类型在mysql处理上简单。</li>
-<li>尽可能的使用not null定义字段。</li>
-<li>尽量少用text类型，非用不可时最好考虑分表。</li>
-</ol>
-<p>例子：</p>
-<ol>
-<li><p>时间使用 int (timestamp) 类型</p>
-<p>利用 FROM_UNIXTIME()、UNIX_TIMESTAMP() 两个函数进行转换</p>
-</li>
-<li><p>ip 地址使用 bigint 类型</p>
-<p>利用 INET_ATON()、INET_NTOA() 两个函数进行转换</p>
-</li>
-</ol>
-</li>
-<li><h4 id="表的范式化（主要让设计的表满足第三范式）"><a href="#表的范式化（主要让设计的表满足第三范式）" class="headerlink" title="表的范式化（主要让设计的表满足第三范式）"></a>表的范式化（主要让设计的表满足第三范式）</h4></li>
-<li><h4 id="分库、分表（垂直拆分、水平拆分）"><a href="#分库、分表（垂直拆分、水平拆分）" class="headerlink" title="分库、分表（垂直拆分、水平拆分）"></a>分库、分表（垂直拆分、水平拆分）</h4><h3 id="垂直拆分"><a href="#垂直拆分" class="headerlink" title="垂直拆分"></a>垂直拆分</h3><p>垂直拆分原则：</p>
-<ol>
-<li>把不常用的字段单独存放到一个表中</li>
-<li>把大字段独立存放在一个表中</li>
-<li>把经常一起使用的字段存放在一个表中</li>
-</ol>
-<h3 id="水平拆分"><a href="#水平拆分" class="headerlink" title="水平拆分"></a>水平拆分</h3><p>拆分方法：</p>
-<ol>
-<li>对 id 进行 hash 运算，若拆成5个表则使用 mod(id, 5) 取出 0-4 值</li>
-<li>针对不同的 hashId 把数据存储在不同的表中</li>
-</ol>
-<p>问题：</p>
-<ol>
-<li>跨分区表查询</li>
-<li>统计及后台报表</li>
-</ol>
-</li>
-</ol>
+        <p>To be continue……</p>
 
       
     </div>
@@ -597,12 +503,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
-          
-        </div>
-      
 
       
       
@@ -612,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/" rel="next" title="ACID&事务隔离级别">
-                <i class="fa fa-chevron-left"></i> ACID&事务隔离级别
+              <a href="/2020/02/24/SpringBean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="next" title="SpringBean生命周期">
+                <i class="fa fa-chevron-left"></i> SpringBean生命周期
               </a>
             
           </div>
@@ -621,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%94%BB%E7%95%A5/" rel="prev" title="个人博客攻略">
-                个人博客攻略 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -676,17 +572,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -769,22 +656,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库优化"><span class="nav-number">1.</span> <span class="nav-text">数据库优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySql-分析-sql-语句效率"><span class="nav-number">1.1.</span> <span class="nav-text">MySql 分析 sql 语句效率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySql内部函数-explain（查询sql的执行计划）使用方法以及返回各列的含义"><span class="nav-number">1.1.1.</span> <span class="nav-text">MySql内部函数 explain（查询sql的执行计划）使用方法以及返回各列的含义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-语句优化"><span class="nav-number">1.2.</span> <span class="nav-text">SQL 语句优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引优化"><span class="nav-number">1.3.</span> <span class="nav-text">索引优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库结构优化"><span class="nav-number">1.4.</span> <span class="nav-text">数据库结构优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择合适的数据类型"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">选择合适的数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表的范式化（主要让设计的表满足第三范式）"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">表的范式化（主要让设计的表满足第三范式）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分库、分表（垂直拆分、水平拆分）"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">分库、分表（垂直拆分、水平拆分）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直拆分"><span class="nav-number">1.4.1.</span> <span class="nav-text">垂直拆分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平拆分"><span class="nav-number">1.4.2.</span> <span class="nav-text">水平拆分</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

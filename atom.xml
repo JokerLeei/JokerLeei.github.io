@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-23T06:31:04.223Z</updated>
+  <updated>2020-02-24T05:49:05.756Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>毕业设计</title>
+    <link href="http://yoursite.com/2020/02/24/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://yoursite.com/2020/02/24/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/</id>
+    <published>2020-02-24T05:46:27.000Z</published>
+    <updated>2020-02-24T05:49:05.756Z</updated>
+    
+    <content type="html"><![CDATA[<p>To be continue……</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;To be continue……&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="经验" scheme="http://yoursite.com/categories/%E7%BB%8F%E9%AA%8C/"/>
+    
+      <category term="项目" scheme="http://yoursite.com/categories/%E7%BB%8F%E9%AA%8C/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBean生命周期</title>
+    <link href="http://yoursite.com/2020/02/24/SpringBean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>http://yoursite.com/2020/02/24/SpringBean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</id>
+    <published>2020-02-24T05:27:08.000Z</published>
+    <updated>2020-02-24T05:45:47.945Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><h3 id="实例化-Instantiation"><a href="#实例化-Instantiation" class="headerlink" title="实例化 Instantiation"></a>实例化 Instantiation</h3></li><li><h3 id="属性赋值-Populate"><a href="#属性赋值-Populate" class="headerlink" title="属性赋值 Populate"></a>属性赋值 Populate</h3></li><li><h3 id="初始化-Initialization"><a href="#初始化-Initialization" class="headerlink" title="初始化 Initialization"></a>初始化 Initialization</h3></li><li><h3 id="销毁-Destruction"><a href="#销毁-Destruction" class="headerlink" title="销毁 Destruction"></a>销毁 Destruction</h3></li></ol><p>实例化 -&gt; 属性赋值 -&gt; 初始化 -&gt; 销毁</p><p>主要逻辑都在doCreate()方法中，逻辑很清晰，就是顺序调用以下三个方法，这三个方法与三个生命周期阶段一一对应，非常重要，在后续扩展接口分析中也会涉及。</p><ol><li>createBeanInstance() -&gt; 实例化</li><li>populateBean() -&gt; 属性赋值</li><li>initializeBean() -&gt; 初始化</li></ol><p>源码如下，能证明实例化，属性赋值和初始化这三个生命周期的存在。关于本文的Spring源码都将忽略无关部分，便于理解：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 忽略了无关代码</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">doCreateBean</span><span class="params">(<span class="keyword">final</span> String beanName, <span class="keyword">final</span> RootBeanDefinition mbd, <span class="keyword">final</span> @Nullable Object[] args)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> BeanCreationException </span>&#123;</span><br><span class="line">   <span class="comment">// Instantiate the bean.</span></span><br><span class="line">   BeanWrapper instanceWrapper = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">if</span> (instanceWrapper == <span class="keyword">null</span>) &#123;</span><br><span class="line">       <span class="comment">// 实例化阶段！</span></span><br><span class="line">      instanceWrapper = createBeanInstance(beanName, mbd, args);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// Initialize the bean instance.</span></span><br><span class="line">   Object exposedObject = bean;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       <span class="comment">// 属性赋值阶段！</span></span><br><span class="line">      populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line">       <span class="comment">// 初始化阶段！</span></span><br><span class="line">      exposedObject = initializeBean(beanName, exposedObject, mbd);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>至于销毁，是在容器关闭时调用的，详见<code>ConfigurableApplicationContext#close()</code></p><hr><h2 id="常用扩展点"><a href="#常用扩展点" class="headerlink" title="常用扩展点"></a>常用扩展点</h2><h4 id="第一大类：影响多个Bean的接口"><a href="#第一大类：影响多个Bean的接口" class="headerlink" title="第一大类：影响多个Bean的接口"></a>第一大类：影响多个Bean的接口</h4><p>这两兄弟可能是Spring扩展中<strong>最重要</strong>的两个接口！InstantiationAwareBeanPostProcessor作用于<strong>实例化</strong>阶段的前后，BeanPostProcessor作用于<strong>初始化</strong>阶段的前后。正好和第一、第三个生命周期阶段对应。通过图能更好理解：</p><p><img src="/2020/02/24/SpringBean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/img1.webp" alt></p><p>InstantiationAwareBeanPostProcessor实际上继承了BeanPostProcessor接口，严格意义上来看他们不是两兄弟，而是两父子。但是从生命周期角度我们重点关注其特有的对实例化阶段的影响，图中省略了从BeanPostProcessor继承的方法。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InstantiationAwareBeanPostProcessor extends BeanPostProcessor</span><br></pre></td></tr></table></figure><h4 id="第二大类：只调用一次的接口"><a href="#第二大类：只调用一次的接口" class="headerlink" title="第二大类：只调用一次的接口"></a>第二大类：只调用一次的接口</h4><p>这一大类接口的特点是功能丰富，常用于用户自定义扩展。<br> 第二大类中又可以分为两类：</p><ol><li>Aware类型的接口</li><li>生命周期接口</li></ol><h5 id="无所不知的Aware"><a href="#无所不知的Aware" class="headerlink" title="无所不知的Aware"></a>无所不知的Aware</h5><p>Aware类型的接口的作用就是让我们能够拿到Spring容器中的一些资源。基本都能够见名知意，Aware之前的名字就是可以拿到什么资源，例如<code>BeanNameAware</code>可以拿到BeanName，以此类推。调用时机需要注意：所有的Aware方法都是在初始化阶段之前调用的！</p><h5 id="简单的两个生命周期接口"><a href="#简单的两个生命周期接口" class="headerlink" title="简单的两个生命周期接口"></a>简单的两个生命周期接口</h5><p>至于剩下的两个生命周期接口就很简单了，实例化和属性赋值都是Spring帮助我们做的，能够自己实现的有初始化和销毁两个生命周期阶段。</p><ol><li>InitializingBean 对应生命周期的初始化阶段。</li><li>DisposableBean 类似于InitializingBean，对应生命周期的销毁阶段 。</li></ol><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring Bean的生命周期分为<code>四个阶段</code>和<code>多个扩展点</code>。扩展点又可以分为<code>影响多个Bean</code>和<code>影响单个Bean</code>。整理如下：<br> 四个阶段</p><ul><li>实例化 Instantiation</li><li>属性赋值 Populate</li><li>初始化 Initialization</li><li>销毁 Destruction</li></ul><p>多个扩展点</p><ul><li>影响多个Bean<ul><li>BeanPostProcessor</li><li>InstantiationAwareBeanPostProcessor</li></ul></li><li>影响单个Bean<ul><li>Aware<ul><li>Aware Group1<ul><li>BeanNameAware</li><li>BeanClassLoaderAware</li><li>BeanFactoryAware</li></ul></li><li>Aware Group2<ul><li>EnvironmentAware</li><li>EmbeddedValueResolverAware</li><li>ApplicationContextAware(ResourceLoaderAware\ApplicationEventPublisherAware\MessageSourceAware)</li></ul></li></ul></li><li>生命周期<ul><li>InitializingBean</li><li>DisposableBean</li></ul></li></ul></li></ul><hr><p>参考：<a href="https://www.jianshu.com/p/1dec08d290c1" target="_blank" rel="noopener">https://www.jianshu.com/p/1dec08d290c1</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;实例化-Instantiation&quot;&gt;&lt;a href=&quot;#实例化-Instantiation&quot; class=&quot;headerlink&quot; title=&quot;实例化 Instantiation&quot;&gt;&lt;/a&gt;实例化 Instantiation&lt;/h3&gt;&lt;/li
+      
+    
+    </summary>
+    
+    
+      <category term="知识点" scheme="http://yoursite.com/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>线程池</title>
