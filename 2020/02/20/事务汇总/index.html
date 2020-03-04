@@ -115,17 +115,19 @@
 
 
 
-<meta name="description" content="ACIDAtomicity（原子性）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 Consistency（一致性）事务前后数据的完整性必须保持一致。 Isolation（隔离性）事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。 Durability（持久性）持久性是指一个事务一旦被提">
+<meta name="description" content="😄目录😄ACID事务隔离级别脏读、不可重复读、幻读事务传播行为MVCC ACIDAtomicity（原子性）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 如，A向B转钱，在事务中的扣款和加款两条语句，要么都执行，要么都不执行。 Consistency（一致性）事务前后数据的完整性必须保持一致。 如，A和B存款总额为1000，A向B转钱，无论失败，最终A和B的存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ACID&amp;事务隔离级别">
-<meta property="og:url" content="http://yoursite.com/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/index.html">
+<meta property="og:title" content="事务汇总">
+<meta property="og:url" content="http://yoursite.com/2020/02/20/%E4%BA%8B%E5%8A%A1%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="JokerLee">
-<meta property="og:description" content="ACIDAtomicity（原子性）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 Consistency（一致性）事务前后数据的完整性必须保持一致。 Isolation（隔离性）事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。 Durability（持久性）持久性是指一个事务一旦被提">
+<meta property="og:description" content="😄目录😄ACID事务隔离级别脏读、不可重复读、幻读事务传播行为MVCC ACIDAtomicity（原子性）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 如，A向B转钱，在事务中的扣款和加款两条语句，要么都执行，要么都不执行。 Consistency（一致性）事务前后数据的完整性必须保持一致。 如，A和B存款总额为1000，A向B转钱，无论失败，最终A和B的存">
+<meta property="og:image" content="http://yoursite.com/2020/02/20/%E4%BA%8B%E5%8A%A1%E6%B1%87%E6%80%BB/mvcc.jpeg">
 <meta property="article:published_time" content="2020-02-20T10:19:00.000Z">
-<meta property="article:modified_time" content="2020-02-20T10:47:00.922Z">
+<meta property="article:modified_time" content="2020-03-04T15:41:40.492Z">
 <meta property="article:author" content="JokerLee">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/20/%E4%BA%8B%E5%8A%A1%E6%B1%87%E6%80%BB/mvcc.jpeg">
 
 
 
@@ -155,14 +157,14 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/20/ACID事务/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/20/事务汇总/"/>
 
 
 
 
 
 
-  <title>ACID&事务隔离级别 | JokerLee</title>
+  <title>事务汇总 | JokerLee</title>
   
 
 
@@ -329,7 +331,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/%E4%BA%8B%E5%8A%A1%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JokerLee">
@@ -346,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ACID&事务隔离级别</h1>
+          <h1 class="post-title" itemprop="name headline">事务汇总</h1>
         
 
         <div class="post-meta">
@@ -374,8 +376,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-20T18:47:00+08:00">
-                2020-02-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-04T23:41:40+08:00">
+                2020-03-04
               </time>
             
           </span>
@@ -400,6 +402,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -410,7 +423,7 @@
 
           
           
-             <span id="/2020/02/20/ACID%E4%BA%8B%E5%8A%A1/" class="leancloud_visitors" data-flag-title="ACID&事务隔离级别">
+             <span id="/2020/02/20/%E4%BA%8B%E5%8A%A1%E6%B1%87%E6%80%BB/" class="leancloud_visitors" data-flag-title="事务汇总">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -440,7 +453,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  892
+                  1.5k
                 </span>
               
 
@@ -456,7 +469,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -477,15 +490,21 @@
       
 
       
-        <h1 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h1><h2 id="Atomicity（原子性）"><a href="#Atomicity（原子性）" class="headerlink" title="Atomicity（原子性）"></a>Atomicity（原子性）</h2><p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
+        <h1 id="😄目录😄"><a href="#😄目录😄" class="headerlink" title="😄目录😄"></a><center>😄目录😄</center></h1><h2 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a><center><a href="#1">ACID</a></center></h2><h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a><center><a href="#2">事务隔离级别</a></center></h2><h2 id="脏读、不可重复读、幻读"><a href="#脏读、不可重复读、幻读" class="headerlink" title="脏读、不可重复读、幻读"></a><center><a href="#3">脏读、不可重复读、幻读</a></center></h2><h2 id="事务传播行为"><a href="#事务传播行为" class="headerlink" title="事务传播行为"></a><center><a href="#4">事务传播行为</a></center></h2><h2 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a><center><a href="#5">MVCC</a></center></h2><hr>
+<h1 id="ACID-1"><a href="#ACID-1" class="headerlink" title="ACID"></a><h id="1">ACID</h></h1><h2 id="Atomicity（原子性）"><a href="#Atomicity（原子性）" class="headerlink" title="Atomicity（原子性）"></a>Atomicity（原子性）</h2><p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
+<p>如，A向B转钱，在事务中的扣款和加款两条语句，要么都执行，要么都不执行。</p>
 <h2 id="Consistency（一致性）"><a href="#Consistency（一致性）" class="headerlink" title="Consistency（一致性）"></a>Consistency（一致性）</h2><p>事务前后数据的完整性必须保持一致。</p>
+<p>如，A和B存款总额为1000，A向B转钱，无论失败，最终A和B的存款总额依然为1000。</p>
 <h2 id="Isolation（隔离性）"><a href="#Isolation（隔离性）" class="headerlink" title="Isolation（隔离性）"></a>Isolation（隔离性）</h2><p>事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。</p>
+<p><a href="#2">事务隔离级别</a> 用于控制事务间的隔离性。</p>
 <h2 id="Durability（持久性）"><a href="#Durability（持久性）" class="headerlink" title="Durability（持久性）"></a>Durability（持久性）</h2><p>持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响</p>
 <hr>
-<h1 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h1><h6 id="事务隔离级别分为四种（级别递增）："><a href="#事务隔离级别分为四种（级别递增）：" class="headerlink" title="事务隔离级别分为四种（级别递增）："></a>事务隔离级别分为四种（级别递增）：</h6><p>1、Read Uncommitted（未提交读） ：事务中的修改，即使没有提交，其他事务也可以看得到，会导致“脏读”、“幻读”和“不可重复读取”。</p>
-<p>2、READ COMMITTED （提交读）：大多数主流数据库的默认事务等级，保证了一个事务不会读到另一个并行事务已修改但未提交的数据，避免了“脏读取”，但不能避免“幻读”和“不可重复读取”。该级别适用于大多数系统。</p>
-<p>3、REPEATABLE READ（重复读） ：保证了一个事务不会修改已经由另一个事务读取但未提交（回滚）的数据。避免了“脏读取”和“不可重复读取”的情况，但不能避免“幻读”，但是带来了更多的性能损失。</p>
-<p>4、Serializable （串行化）：最严格的级别，事务串行执行，资源消耗最大。</p>
+<h1 id="事务隔离级别-1"><a href="#事务隔离级别-1" class="headerlink" title="事务隔离级别"></a><h id="2">事务隔离级别</h></h1><h6 id="事务隔离级别分为四种（级别递增）："><a href="#事务隔离级别分为四种（级别递增）：" class="headerlink" title="事务隔离级别分为四种（级别递增）："></a>事务隔离级别分为四种（级别递增）：</h6><ol>
+<li>Read Uncommitted（未提交读） ：事务中的修改，即使没有提交，其他事务也可以看得到，会导致“脏读”、“幻读”和“不可重复读取”。</li>
+<li>READ COMMITTED （提交读）：大多数主流数据库的默认事务等级，保证了一个事务不会读到另一个并行事务已修改但未提交的数据，避免了“脏读取”，但不能避免“幻读”和“不可重复读取”。该级别适用于大多数系统。</li>
+<li>REPEATABLE READ（重复读） ：保证了一个事务不会修改已经由另一个事务读取但未提交（回滚）的数据。避免了“脏读取”和“不可重复读取”的情况，但不能避免“幻读”，但是带来了更多的性能损失。</li>
+<li>Serializable （串行化）：最严格的级别，事务串行执行，资源消耗最大。</li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -520,14 +539,37 @@
 <td>×</td>
 </tr>
 </tbody></table>
+<p>低级别的隔离一般支持更高的并发处理，并拥有更低的系统开销。高级别的隔离可靠性较高，但系统开销较大。</p>
+<h3 id="MySQL-默认事务隔离级别：重复读（Repeatable-read）"><a href="#MySQL-默认事务隔离级别：重复读（Repeatable-read）" class="headerlink" title="MySQL 默认事务隔离级别：重复读（Repeatable read）"></a>MySQL 默认事务隔离级别：重复读（Repeatable read）</h3><h3 id="Oracle-默认事务隔离级别：读已提交（Read-committed）"><a href="#Oracle-默认事务隔离级别：读已提交（Read-committed）" class="headerlink" title="Oracle 默认事务隔离级别：读已提交（Read committed）"></a>Oracle 默认事务隔离级别：读已提交（Read committed）</h3><hr>
+<h1 id="脏读、不可重复读、幻读-1"><a href="#脏读、不可重复读、幻读-1" class="headerlink" title="脏读、不可重复读、幻读"></a><h id="3">脏读、不可重复读、幻读</h></h1><h3 id="脏读（前后多次读取，数据内容不一致-修改者事务先开启）"><a href="#脏读（前后多次读取，数据内容不一致-修改者事务先开启）" class="headerlink" title="脏读（前后多次读取，数据内容不一致/修改者事务先开启）"></a>脏读（前后多次读取，数据内容不一致/修改者事务先开启）</h3><p>一个事务读取到了另外一个事务没有提交的数据<br>事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据</p>
+<h3 id="不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）"><a href="#不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）" class="headerlink" title="不可重复读（前后多次读取，数据内容不一致/修改者事务后开启）"></a>不可重复读（前后多次读取，数据内容不一致/修改者事务后开启）</h3><p>在同一事务中，两次读取同一数据，得到内容不同<br>事务A多次读取同一数据，事务B在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果不一致</p>
+<h3 id="幻读（前后多次读取，数据总量不一致-修改者事务后开启）"><a href="#幻读（前后多次读取，数据总量不一致-修改者事务后开启）" class="headerlink" title="幻读（前后多次读取，数据总量不一致/修改者事务后开启）"></a>幻读（前后多次读取，数据总量不一致/修改者事务后开启）</h3><p>同一事务中，用同样的操作读取两次，得到的记录数不相同<br>系统管理员A将数据库中所有学生的成绩从具体分数改为ABCDE等级，但是系统管理员B就在这个时候插入了一条具体分数的记录，当系统管理员A改结束后发现还有一条记录没有改过来，就好像发生了幻觉一样</p>
+<h5 id="不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"><a href="#不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete" class="headerlink" title="不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"></a><u>不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete</u></h5><hr>
+<h1 id="事务传播行为-1"><a href="#事务传播行为-1" class="headerlink" title="事务传播行为"></a><h id="4">事务传播行为</h></h1><ul>
+<li><strong>PROPAGATION_REQUIRED</strong>：如果当前没有事务，就创建一个新事务，如果当前存在事务，就加入该事务。</li>
+<li><strong>PROPAGATION_SUPPORTS</strong>：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就以非事务执行。</li>
+<li><strong>PROPAGATION_MANDATORY</strong>：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就抛出异常。</li>
+<li><strong>PROPAGATION_REQUIRES_NEW</strong>：创建新事务，无论当前存不存在事务，都创建新事务。</li>
+<li><strong>PROPAGATION_NOT_SUPPORTED</strong>：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+<li><strong>PROPAGATION_NEVER</strong>：以非事务方式执行，如果当前存在事务，则抛出异常。</li>
+<li><strong>PROPAGATION_NESTED</strong>：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
+</ul>
 <hr>
-<h1 id="脏读、不可重复读、幻读"><a href="#脏读、不可重复读、幻读" class="headerlink" title="脏读、不可重复读、幻读"></a>脏读、不可重复读、幻读</h1><h3 id="脏读（前后多次读取，数据内容不一致-修改者事务先开启）"><a href="#脏读（前后多次读取，数据内容不一致-修改者事务先开启）" class="headerlink" title="脏读（前后多次读取，数据内容不一致/修改者事务先开启）"></a>脏读（前后多次读取，数据内容不一致/修改者事务先开启）</h3><p>所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读。</p>
-<p>也就是说，当前事务读到的数据是别的事务想要修改成为的但是没有修改成功的数据。</p>
-<h3 id="不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）"><a href="#不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）" class="headerlink" title="不可重复读（前后多次读取，数据内容不一致/修改者事务后开启）"></a>不可重复读（前后多次读取，数据内容不一致/修改者事务后开启）</h3><p>事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。</p>
-<p>也就是说，当前事务先进行了一次数据读取，然后再次读取到的数据是别的事务修改成功的数据，导致两次读取到的数据不匹配，也就照应了不可重复读的语义。</p>
-<h3 id="幻读（前后多次读取，数据总量不一致-修改者事务后开启）"><a href="#幻读（前后多次读取，数据总量不一致-修改者事务后开启）" class="headerlink" title="幻读（前后多次读取，数据总量不一致/修改者事务后开启）"></a>幻读（前后多次读取，数据总量不一致/修改者事务后开启）</h3><p>事务A首先根据条件索引得到N条数据，然后事务B改变了这N条数据之外的M条或者增添了M条符合事务A搜索条件的数据，导致事务A再次搜索发现有N+M条数据了，就产生了幻读。</p>
-<p>也就是说，当前事务读第一次取到的数据比后来读取到数据条目少。</p>
-<h5 id="不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"><a href="#不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete" class="headerlink" title="不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"></a><u>不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete</u></h5>
+<h1 id="MVCC-1"><a href="#MVCC-1" class="headerlink" title="MVCC"></a><h id="5">MVCC</h></h1><h3 id="MVCC（Multi-Version-Concurrency-Control）：多版本并发控制"><a href="#MVCC（Multi-Version-Concurrency-Control）：多版本并发控制" class="headerlink" title="MVCC（Multi-Version Concurrency Control）：多版本并发控制"></a>MVCC（Multi-Version Concurrency Control）：多版本并发控制</h3><p>大多数的MySQL事务型存储引擎，如InnoDB，Falcon以及PBXT都不使用一种简单的行锁机制。事实上，他们都和另外一种用来增加并发性的被称为“多版本并发控制（MVCC）”的机制来一直使用。MVCC不只使用在MySQL 中，Oracle，PostgreSQL以及其他一些数据为系统也同样使用它。 </p>
+<h3 id="基本特征（乐观锁）"><a href="#基本特征（乐观锁）" class="headerlink" title="基本特征（乐观锁）"></a>基本特征（乐观锁）</h3><ul>
+<li>每行数据都存在一个版本，每次数据更新时都更新该版本。</li>
+<li>修改时Copy出当前版本随意修改，各个事务之间无干扰。</li>
+<li>保存时比较版本号，如果成功（commit），则覆盖原记录；失败则放弃copy（rollback）</li>
+</ul>
+<h3 id="MySQL-中的-MVCC"><a href="#MySQL-中的-MVCC" class="headerlink" title="MySQL 中的 MVCC"></a>MySQL 中的 MVCC</h3><p>数据库默认隔离级别：<strong>RR（Repeatable Read，可重复读），MVCC主要适用于Mysql的RC,RR隔离级别</strong></p>
+<h5 id="InnoDB存储引擎MVCC的实现策略"><a href="#InnoDB存储引擎MVCC的实现策略" class="headerlink" title="InnoDB存储引擎MVCC的实现策略"></a>InnoDB存储引擎MVCC的实现策略</h5><p>在每一行数据中额外保存两个隐藏的列：当前行创建时的版本号和删除时的版本号。这里的版本号并不是实际的时间值，而是系统版本号。每开始新的事务，系统版本号都会自动递增。事务开始时刻的系统版本号会作为事务的版本号，用来和查询每行记录的版本号进行比较。</p>
+<p>隐藏列：</p>
+<ul>
+<li>trx_id（版本链）</li>
+<li>roll_pointer（上一个版本的地址）</li>
+</ul>
+<p><img src="/2020/02/20/%E4%BA%8B%E5%8A%A1%E6%B1%87%E6%80%BB/mvcc.jpeg" alt></p>
+
       
     </div>
     
@@ -657,7 +699,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -724,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ACID"><span class="nav-number">1.</span> <span class="nav-text">ACID</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Atomicity（原子性）"><span class="nav-number">1.1.</span> <span class="nav-text">Atomicity（原子性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistency（一致性）"><span class="nav-number">1.2.</span> <span class="nav-text">Consistency（一致性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Isolation（隔离性）"><span class="nav-number">1.3.</span> <span class="nav-text">Isolation（隔离性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Durability（持久性）"><span class="nav-number">1.4.</span> <span class="nav-text">Durability（持久性）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#事务隔离级别分为四种（级别递增）："><span class="nav-number">2.0.0.0.0.1.</span> <span class="nav-text">事务隔离级别分为四种（级别递增）：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脏读、不可重复读、幻读"><span class="nav-number">3.</span> <span class="nav-text">脏读、不可重复读、幻读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脏读（前后多次读取，数据内容不一致-修改者事务先开启）"><span class="nav-number">3.0.1.</span> <span class="nav-text">脏读（前后多次读取，数据内容不一致&#x2F;修改者事务先开启）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）"><span class="nav-number">3.0.2.</span> <span class="nav-text">不可重复读（前后多次读取，数据内容不一致&#x2F;修改者事务后开启）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幻读（前后多次读取，数据总量不一致-修改者事务后开启）"><span class="nav-number">3.0.3.</span> <span class="nav-text">幻读（前后多次读取，数据总量不一致&#x2F;修改者事务后开启）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"><span class="nav-number">3.0.3.0.1.</span> <span class="nav-text">不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#😄目录😄"><span class="nav-number">1.</span> <span class="nav-text">😄目录😄</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACID"><span class="nav-number">1.1.</span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">1.2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脏读、不可重复读、幻读"><span class="nav-number">1.3.</span> <span class="nav-text">脏读、不可重复读、幻读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务传播行为"><span class="nav-number">1.4.</span> <span class="nav-text">事务传播行为</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVCC"><span class="nav-number">1.5.</span> <span class="nav-text">MVCC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ACID-1"><span class="nav-number">2.</span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-NaN"><a class="nav-link" href="#1"><span class="nav-number"></span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Atomicity（原子性）"><span class="nav-number">2.1.</span> <span class="nav-text">Atomicity（原子性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistency（一致性）"><span class="nav-number">2.2.</span> <span class="nav-text">Consistency（一致性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Isolation（隔离性）"><span class="nav-number">2.3.</span> <span class="nav-text">Isolation（隔离性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Durability（持久性）"><span class="nav-number">2.4.</span> <span class="nav-text">Durability（持久性）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别-1"><span class="nav-number">3.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-NaN"><a class="nav-link" href="#2"><span class="nav-number"></span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#事务隔离级别分为四种（级别递增）："><span class="nav-number">3.0.0.0.0.1.</span> <span class="nav-text">事务隔离级别分为四种（级别递增）：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-默认事务隔离级别：重复读（Repeatable-read）"><span class="nav-number">3.0.1.</span> <span class="nav-text">MySQL 默认事务隔离级别：重复读（Repeatable read）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oracle-默认事务隔离级别：读已提交（Read-committed）"><span class="nav-number">3.0.2.</span> <span class="nav-text">Oracle 默认事务隔离级别：读已提交（Read committed）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脏读、不可重复读、幻读-1"><span class="nav-number">4.</span> <span class="nav-text">脏读、不可重复读、幻读</span></a></li><li class="nav-item nav-level-NaN"><a class="nav-link" href="#3"><span class="nav-number"></span> <span class="nav-text">脏读、不可重复读、幻读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脏读（前后多次读取，数据内容不一致-修改者事务先开启）"><span class="nav-number">4.0.1.</span> <span class="nav-text">脏读（前后多次读取，数据内容不一致&#x2F;修改者事务先开启）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可重复读（前后多次读取，数据内容不一致-修改者事务后开启）"><span class="nav-number">4.0.2.</span> <span class="nav-text">不可重复读（前后多次读取，数据内容不一致&#x2F;修改者事务后开启）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幻读（前后多次读取，数据总量不一致-修改者事务后开启）"><span class="nav-number">4.0.3.</span> <span class="nav-text">幻读（前后多次读取，数据总量不一致&#x2F;修改者事务后开启）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete"><span class="nav-number">4.0.3.0.1.</span> <span class="nav-text">不可重复读和幻读区别：不可重复读针对update，幻读针对insert和delete</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务传播行为-1"><span class="nav-number">5.</span> <span class="nav-text">事务传播行为</span></a></li><li class="nav-item nav-level-NaN"><a class="nav-link" href="#4"><span class="nav-number"></span> <span class="nav-text">事务传播行为</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVCC-1"><span class="nav-number">6.</span> <span class="nav-text">MVCC</span></a></li><li class="nav-item nav-level-NaN"><a class="nav-link" href="#5"><span class="nav-number"></span> <span class="nav-text">MVCC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVCC（Multi-Version-Concurrency-Control）：多版本并发控制"><span class="nav-number">6.0.1.</span> <span class="nav-text">MVCC（Multi-Version Concurrency Control）：多版本并发控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本特征（乐观锁）"><span class="nav-number">6.0.2.</span> <span class="nav-text">基本特征（乐观锁）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-中的-MVCC"><span class="nav-number">6.0.3.</span> <span class="nav-text">MySQL 中的 MVCC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#InnoDB存储引擎MVCC的实现策略"><span class="nav-number">6.0.3.0.1.</span> <span class="nav-text">InnoDB存储引擎MVCC的实现策略</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -758,7 +800,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">15k</span>
+    <span title="本站总字数">15.7k</span>
   
 </div>
 
